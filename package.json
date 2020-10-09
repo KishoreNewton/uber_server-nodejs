@@ -1,0 +1,41 @@
+{
+  "name": "ubers",
+  "version": "1.0.0",
+  "description": "Server for the Uber clone",
+  "main": "index.js",
+  "scripts": {
+    "dev": "cd src && nodemon --exec ts-node index.ts -e ts,graphql"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KishoreNewton/uber_server-nodejs.git"
+  },
+  "keywords": [
+    "uber",
+    "clone",
+    "uber",
+    "drive"
+  ],
+  "author": "Kishore Newton",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KishoreNewton/uber_server-nodejs/issues"
+  },
+  "homepage": "https://github.com/KishoreNewton/uber_server-nodejs#readme",
+  "devDependencies": {
+    "@types/node": "^14.11.8",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.3",
+    "@types/cors": "^2.8.7",
+    "@types/helmet": "0.0.48",
+    "@types/morgan": "^1.9.1"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "graphql-tools": "^6.2.4",
+    "graphql-yoga": "^1.18.3",
+    "helmet": "^4.1.1",
+    "merge-graphql-schemas": "^1.7.8",
+    "morgan": "^1.10.0"
+  }
+}
