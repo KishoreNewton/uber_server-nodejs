@@ -13,9 +13,9 @@ const appOptions: Options = {
 };
 
 createConnection(connectionOptions).then(() => {
-  app.start(appOptions, () => {
-    console.log(`Listening on port ${port}`);
-  });
+  app
+    .start(appOptions, () => {
+      console.log(`Listening on port ${port}`);
+    })
+    .catch((error) => console.error(error));
 });
-
-
