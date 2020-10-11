@@ -1,5 +1,6 @@
 type Query {
   user: User
+  verification: Verification
 }
 
 type User {

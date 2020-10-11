@@ -1,8 +1,9 @@
-export const typeDefs = ["type Query {\n  user: User\n}\n\ntype User {\n  id: Int!\n  email: String\n  firstName: String!\n  lastName: String!\n  facebookId: String\n  age: Int\n  password: String\n  phoneNumber: String\n  verifiedEmail: Boolean!\n  verifiedPhoneNumber: Boolean!\n  profilePhoto: String\n  createdAt: String!\n  updatedAt: String\n  fullName: String\n  isDriving: Boolean!\n  isRiding: Boolean!\n  isTaken: Boolean!\n  lastLng: Float!\n  latLat: Float!\n  lastOrientation: Float\n}\n\ntype Verification {\n  id: Int!\n  target: String!\n  payload: String!\n  key: String!\n  used: Boolean!\n  createdAt: String!\n  updatedAt: String!\n}\n"];
+export const typeDefs = ["type Query {\n  user: User\n  verification: Verification\n}\n\ntype User {\n  id: Int!\n  email: String\n  firstName: String!\n  lastName: String!\n  facebookId: String\n  age: Int\n  password: String\n  phoneNumber: String\n  verifiedEmail: Boolean!\n  verifiedPhoneNumber: Boolean!\n  profilePhoto: String\n  createdAt: String!\n  updatedAt: String\n  fullName: String\n  isDriving: Boolean!\n  isRiding: Boolean!\n  isTaken: Boolean!\n  lastLng: Float!\n  latLat: Float!\n  lastOrientation: Float\n}\n\ntype Verification {\n  id: Int!\n  target: String!\n  payload: String!\n  key: String!\n  used: Boolean!\n  createdAt: String!\n  updatedAt: String!\n}\n"];
 /* tslint:disable */
 
 export interface Query {
   user: User | null;
+  verification: Verification | null;
 }
 
 export interface User {
