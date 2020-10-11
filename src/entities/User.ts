@@ -1,6 +1,9 @@
+import bcrypt from 'bcrypt';
 import { IsEmail } from 'class-validator';
 import {
   BaseEntity,
+  BeforeInsert,
+  BeforeUpdate,
   Column,
   CreateDateColumn,
   Entity,
@@ -41,10 +44,6 @@ class User extends BaseEntity {
   @Column({ type: 'text' })
   profilePhoto: string;
 
-  get fullName(): string {
-    return `${this.firstName} ${this.lastName}`;
-  }
-
   @Column({ type: 'boolean' })
   isDriving: boolean;
 
@@ -69,6 +68,26 @@ class User extends BaseEntity {
   @CreateDateColumn()
   createdAt: string;
 
+  get fullName(): string {
+    return `${this.firstName} ${this.lastName}`;
+  }
+
+  private hashPassword(password: string): Promise<string> {
+    return bcrypt.hash(password, 10);
+  }
+
+  public comparePassword(password: string): Promise<boolean> {
+    return bcrypt.compare(password, this.password)
+  }
+
+  @BeforeInsert()
+  @BeforeUpdate()
+  async savePassword(): Promise<void> {
+    if (this.password) {
+      const hashedPassword = await this.hashPassword(this.password);
+      this.password = hashedPassword
+    }
+  }
 }
 
 export default User;
