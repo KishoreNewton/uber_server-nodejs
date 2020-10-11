@@ -1,8 +1,27 @@
 type Query {
+  chat: Chat
+  message: Message
   place: Place
   ride: Ride
   user: User
   verification: Verification
+}
+
+type Chat {
+  id: Int!
+  messages: [Message]!
+  participants: [User]!
+  createdAt: String!
+  updatedAt: String
+}
+
+type Message {
+  id: Int!
+  text: String!
+  chat: Chat!
+  user: User!
+  createdAt: String!
+  updatedAt: String
 }
 
 type Place {
@@ -34,6 +53,7 @@ type Ride {
 
 type User {
   id: Int!
+  chat: Chat
   email: String
   firstName: String!
   lastName: String!

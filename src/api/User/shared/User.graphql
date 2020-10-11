@@ -4,6 +4,8 @@ type Query {
 
 type User {
     id: Int!
+    chat: Chat
+    message: [Message]
     email: String
     firstName: String!
     lastName: String!

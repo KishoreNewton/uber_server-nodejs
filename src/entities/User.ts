@@ -7,9 +7,13 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn
 } from 'typeorm';
+import Chat from './Chat';
+import Message from './Message';
 
 @Entity()
 class User extends BaseEntity {
@@ -62,6 +66,12 @@ class User extends BaseEntity {
   @Column({ type: 'double precision' })
   lastOrientation: number;
 
+  @ManyToOne((type) => Chat, (chat) => chat.participants)
+  chat: Chat;
+
+  @OneToMany(type => Message, message => message.user)
+  messages: Message[]
+    
   @UpdateDateColumn()
   updatedAt: string;
 
@@ -77,7 +87,7 @@ class User extends BaseEntity {
   }
 
   public comparePassword(password: string): Promise<boolean> {
-    return bcrypt.compare(password, this.password)
+    return bcrypt.compare(password, this.password);
   }
 
   @BeforeInsert()
@@ -85,7 +95,7 @@ class User extends BaseEntity {
   async savePassword(): Promise<void> {
     if (this.password) {
       const hashedPassword = await this.hashPassword(this.password);
-      this.password = hashedPassword
+      this.password = hashedPassword;
     }
   }
 }
