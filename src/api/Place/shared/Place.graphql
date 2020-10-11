@@ -1,3 +1,7 @@
+type Query {
+    place: Place
+}
+
 type Place {
     id: Int!
     name: String!

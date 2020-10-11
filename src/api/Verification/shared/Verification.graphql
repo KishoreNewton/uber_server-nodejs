@@ -1,3 +1,7 @@
+type Query {
+  verification: Verification
+}
+
 type Verification {
   id: Int!
   target: String!
