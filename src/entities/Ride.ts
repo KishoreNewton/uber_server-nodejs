@@ -44,3 +44,5 @@ class Ride extends BaseEntity {
   @CreateDateColumn() createdAt: string;
   @UpdateDateColumn() updateAt: string;
 }
+
+export default Ride;
