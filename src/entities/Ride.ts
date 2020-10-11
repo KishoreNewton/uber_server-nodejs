@@ -1,3 +1,4 @@
+import { rideStatus } from 'src/types/types';
 import {
   BaseEntity,
   Column,
@@ -11,8 +12,17 @@ import {
 class Ride extends BaseEntity {
   @PrimaryGeneratedColumn() id: number;
 
-  @Column({ type: 'text' })
-  status: string;
+  @Column({
+    type: 'text',
+    enum: [
+      'ACCEPTED',
+      'FINISHED',
+      'CANCELLED',
+      'REQUESTING',
+      'ONROUTE'
+    ]
+  })
+  status: rideStatus;
 
   @Column({ type: 'text' })
   pickUpAddress: string;
