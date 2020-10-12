@@ -7,6 +7,6 @@ export type Resolver = (
 
 export interface Resolvers {
   [key: string]: {
-    [key: string]: Resolvers;
+    [key: string]: Resolver;
   };
 }

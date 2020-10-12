@@ -22,9 +22,9 @@ class User extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'text', unique: true })
+  @Column({ type: 'text', unique: true, nullable: true })
   @IsEmail()
-  email: string;
+  email: string | null;
 
   @Column({ type: 'boolean', default: false })
   verifiedEmail: boolean;
@@ -36,9 +36,9 @@ class User extends BaseEntity {
   lastName: string;
 
   @Column({ type: 'int' })
-  age: number;
+  age: number | null;
 
-  @Column({ type: 'text' })
+  @Column({ type: 'text', nullable: true })
   password: string;
 
   @Column({ type: 'text' })
