@@ -50,6 +50,9 @@ class User extends BaseEntity {
   @Column({ type: 'text' })
   profilePhoto: string;
 
+  @Column({ type: 'text', nullable: true })
+  fbId: string;
+
   @Column({ type: 'boolean' })
   isDriving: boolean;
 
@@ -74,15 +77,18 @@ class User extends BaseEntity {
   @OneToMany((type) => Message, (message) => message.user)
   messages: Message[];
 
-  @OneToMany((type) => Verification, verification => verification.user)
-  verifications: Verification[]
+  @OneToMany(
+    (type) => Verification,
+    (verification) => verification.user
+  )
+  verifications: Verification[];
 
-  @OneToMany((type) => Ride, ride => ride.passenger)
-  rideAsPassenger: Ride[]
+  @OneToMany((type) => Ride, (ride) => ride.passenger)
+  rideAsPassenger: Ride[];
 
-  @OneToMany((type) => Ride, ride => ride.driver)
-  rideAsDriver: Ride[]
-    
+  @OneToMany((type) => Ride, (ride) => ride.driver)
+  rideAsDriver: Ride[];
+
   @UpdateDateColumn()
   updatedAt: string;
 
