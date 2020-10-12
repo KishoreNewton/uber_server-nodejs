@@ -35,13 +35,13 @@ class User extends BaseEntity {
   @Column({ type: 'text' })
   lastName: string;
 
-  @Column({ type: 'int' })
+  @Column({ type: 'int', nullable: true })
   age: number | null;
 
   @Column({ type: 'text', nullable: true })
   password: string;
 
-  @Column({ type: 'text' })
+  @Column({ type: 'text', nullable: true })
   phoneNumber: string;
 
   @Column({ type: 'boolean', default: false })
@@ -53,22 +53,22 @@ class User extends BaseEntity {
   @Column({ type: 'text', nullable: true })
   fbId: string;
 
-  @Column({ type: 'boolean' })
+  @Column({ type: 'boolean', default: false })
   isDriving: boolean;
 
-  @Column({ type: 'boolean' })
+  @Column({ type: 'boolean', default: false })
   isRiding: boolean;
 
-  @Column({ type: 'boolean' })
+  @Column({ type: 'boolean', default: false })
   isTaken: boolean;
 
-  @Column({ type: 'double precision' })
+  @Column({ type: 'double precision', default: 0 })
   lastLng: number;
 
-  @Column({ type: 'double precision' })
+  @Column({ type: 'double precision', default: 0 })
   lastLat: number;
 
-  @Column({ type: 'double precision' })
+  @Column({ type: 'double precision', default: 0 })
   lastOrientation: number;
 
   @ManyToOne((type) => Chat, (chat) => chat.participants)
